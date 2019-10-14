@@ -61,6 +61,19 @@
                   v-model="selectedHero.description"
                 />
               </div>
+              <div class="field">
+                <label class="label" for="capeCounter">Cape Counter</label>
+                <input
+                  class="input"
+                  id="capeCounter"
+                  type="number"
+                  v-model="selectedHero.capeCounter"
+                />
+              </div>
+              <div class="field">
+                <label class="label" for="capeMessage">Cape Message</label>
+                <label name="capeMessage" class="input">{{ capeMessage }}</label>
+              </div>
             </div>
           </div>
           <footer class="card-footer">
@@ -88,24 +101,28 @@ const ourHeroes = [
     id: 10,
     firstName: 'Ella',
     lastName: 'Papa',
+    capeCounter: 1,
     description: 'fashionista',
   },
   {
     id: 20,
     firstName: 'Madelyn',
     lastName: 'Papa',
+    capeCounter: 3,
     description: 'the cat whisperer',
   },
   {
     id: 30,
     firstName: 'Haley',
     lastName: 'Papa',
+    capeCounter: 2,
     description: 'pen wielder',
   },
   {
     id: 40,
     firstName: 'Landon',
     lastName: 'Papa',
+    capeCounter: 0,
     description: 'arc trooper',
   },
 ];
@@ -115,7 +132,8 @@ export default {
     return {
       heroes: [],
       selectedHero: undefined,
-      message: ''
+      message: '',
+      capeMessage: ''
     }
   },
   computed: {
@@ -166,6 +184,14 @@ export default {
     selectHero(hero) {
       this.selectedHero = hero;
     },
+  },
+  watch: {
+    "selectedHero.capeCounter": {
+      immediate: true,
+      handler(newValue, oldValue) {
+        this.handleTheCapes(newValue);
+      }
+    }
   },
 };
 </script>
