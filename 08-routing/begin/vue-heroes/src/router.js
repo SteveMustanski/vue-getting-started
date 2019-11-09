@@ -22,7 +22,7 @@ export default new Router({
       path: '/heroes/:id',
       name: 'hero-detail',
       component: HeroDetail,
-      props: true,
+      props: route => ({ id: parseInt(route.params.id) }),
     },
     {
       path: '/about',
