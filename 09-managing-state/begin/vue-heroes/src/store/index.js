@@ -25,7 +25,7 @@ const mutations = {
   },
   [UPDATE_HERO](state, hero) {
     const index = state.heroes.findIndex(h => h.id === hero.id);
-    state.heros.splice(index, 1, hero);
+    state.heroes.splice(index, 1, hero);
   },
 };
 const actions = {
@@ -37,7 +37,7 @@ const actions = {
     const addedhero = await dataService.addHero(hero);
     commit(ADD_HERO, addedhero);
   },
-  async DELETE_HERO({ commit }, hero) {
+  async deleteHeroAction({ commit }, hero) {
     const deletedHeroId = await dataService.deleteHero(hero);
     commit(DELETE_HERO, deletedHeroId);
   },
