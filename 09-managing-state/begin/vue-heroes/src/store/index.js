@@ -20,7 +20,9 @@ const actions = {
   },
 };
 
-const getters = {};
+const getters = {
+  getHeroById: state => id => state.heroes.find(h => h.id === id),
+};
 
 export default new Vuex.Store({
   state,
